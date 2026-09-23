@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">TabiTap (旅タップ)</string>
+    <string name="title_activity_main">TabiTap (旅タップ)</string>
+    <string name="package_name">com.tabitap.app</string>
+    <string name="custom_url_scheme">com.tabitap.app</string>
+</resources>

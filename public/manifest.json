@@ -1,0 +1,17 @@
+{
+  "short_name": "TabiTap",
+  "name": "TabiTap (旅タップ) - 日本全国トラベルマップ",
+  "description": "日本全国47都道府県トラベルマップ & 旅の記録",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗾</text></svg>",
+      "type": "image/svg+xml",
+      "sizes": "192x192 512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#090d16",
+  "theme_color": "#090d16",
+  "display": "standalone",
+  "orientation": "portrait"
+}

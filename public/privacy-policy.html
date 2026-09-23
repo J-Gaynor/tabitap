@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy - TabiTap (旅タップ)</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.7;
+      color: #1e293b;
+      background-color: #f8fafc;
+      padding: 24px 16px;
+      margin: 0;
+    }
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 32px 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+    h1 { font-size: 24px; color: #0f172a; margin-top: 0; }
+    h2 { font-size: 18px; color: #1e293b; margin-top: 24px; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; }
+    p, li { font-size: 14px; color: #334155; }
+    ul { padding-left: 20px; }
+    .lang-toggle { display: flex; gap: 12px; margin-bottom: 24px; }
+    .lang-btn { padding: 6px 14px; background: #e2e8f0; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 13px; }
+    .lang-btn.active { background: #e11d48; color: #fff; }
+    .section-en, .section-ja { display: block; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('ja')">日本語</button>
+      <button class="lang-btn" onclick="setLang('en')">English</button>
+    </div>
+
+    <!-- JAPANESE -->
+    <div id="ja" class="section-ja">
+      <h1>プライバシーポリシー</h1>
+      <p>最終更新日: 2026年9月23日</p>
+      <p>「TabiTap（旅タップ）」（以下、「本アプリ」）を提供するJoseph Morgan Gaynor（以下、「当方」）は、利用者の個人情報の保護に努めています。</p>
+
+      <h2>1. 収集する情報とその利用目的</h2>
+      <p>本アプリでは、以下のサービスを利用してサービスの提供および改善を行っています：</p>
+      <ul>
+        <li><strong>Google AdMob</strong>: アプリ内広告の配信のため、広告識別子（IDFA / AAID）や一般的な端末情報を取得する場合があります。</li>
+        <li><strong>RevenueCat</strong>: アプリ内課金（広告非表示プラン等の購入状況管理）の処理および検証のため、匿名の購入識別子を使用します。</li>
+        <li><strong>Firebase / ローカルストレージ</strong>: 都道府県の訪問記録、メモ、写真などの旅の記録は、主にご利用の端末内に保存され、本人の同意なしに第三者に共有されることはありません。</li>
+      </ul>
+
+      <h2>2. 第三者への提供</h2>
+      <p>当方は、法令に基づく場合を除き、利用者の個人情報を第三者に提供することはありません。</p>
+
+      <h2>3. お問い合わせ</h2>
+      <p>プライバシーに関するご質問やお問い合わせは、アプリサポート窓口までご連絡ください。</p>
+    </div>
+
+    <!-- ENGLISH -->
+    <div id="en" class="section-en" style="display:none;">
+      <h1>Privacy Policy</h1>
+      <p>Last Updated: September 23, 2026</p>
+      <p>TabiTap ("the App"), developed by Joseph Morgan Gaynor ("we", "us"), is committed to protecting your privacy.</p>
+
+      <h2>1. Information We Collect and How We Use It</h2>
+      <p>The App integrates third-party services for essential functionality:</p>
+      <ul>
+        <li><strong>Google AdMob</strong>: Used to deliver advertisements. AdMob may collect and process device identifiers (such as IDFA, Google Advertising ID) and telemetry for personalized or non-personalized ads.</li>
+        <li><strong>RevenueCat</strong>: Used to process and manage In-App Purchases (e.g., Ad-Free lifetime purchase). RevenueCat processes anonymous transaction receipts.</li>
+        <li><strong>Local Storage / Firebase</strong>: Your visited prefectures, travel notes, photos, and custom map configurations are stored locally on your device or securely via Firebase cloud storage when enabled.</li>
+      </ul>
+
+      <h2>2. Data Security & Third-Party Sharing</h2>
+      <p>We do not sell, rent, or trade your personal data to third parties. Data is solely processed to provide core app features, purchases, and ad serving.</p>
+
+      <h2>3. Contact Us</h2>
+      <p>If you have questions regarding this Privacy Policy, please contact developer support.</p>
+    </div>
+  </div>
+
+  <script>
+    function setLang(lang) {
+      document.getElementById('ja').style.display = lang === 'ja' ? 'block' : 'none';
+      document.getElementById('en').style.display = lang === 'en' ? 'block' : 'none';
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>

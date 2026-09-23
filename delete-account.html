@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Account & Data Deletion - TabiTap (旅タップ)</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.7;
+      color: #1e293b;
+      background-color: #f8fafc;
+      padding: 24px 16px;
+      margin: 0;
+    }
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 32px 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+    h1 { font-size: 24px; color: #0f172a; margin-top: 0; }
+    h2 { font-size: 18px; color: #1e293b; margin-top: 24px; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; }
+    p, li { font-size: 14px; color: #334155; }
+    ul { padding-left: 20px; }
+    .card { background: #f1f5f9; padding: 16px; border-radius: 8px; margin: 16px 0; }
+    .lang-toggle { display: flex; gap: 12px; margin-bottom: 24px; }
+    .lang-btn { padding: 6px 14px; background: #e2e8f0; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 13px; }
+    .lang-btn.active { background: #e11d48; color: #fff; }
+    .section-en, .section-ja { display: block; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('ja')">日本語</button>
+      <button class="lang-btn" onclick="setLang('en')">English</button>
+    </div>
+
+    <!-- JAPANESE -->
+    <div id="ja" class="section-ja">
+      <h1>アカウントおよびデータの削除リクエスト</h1>
+      <p>「TabiTap（旅タップ）」をご利用いただきありがとうございます。本アプリでは、利用者のプライバシーとデータの自己管理を尊重しています。</p>
+
+      <h2>1. アプリ内からのデータ削除方法</h2>
+      <p>アプリ内でサインインしている場合、以下の手順ですぐにデータを削除できます：</p>
+      <div class="card">
+        <ol>
+          <li>「TabiTap」アプリを開きます。</li>
+          <li>画面右上の<strong>設定アイコン（歯車）</strong>をタップします。</li>
+          <li>アカウント設定から<strong>「アカウントを削除」</strong>または<strong>「すべてのマップデータを消去」</strong>を選択します。</li>
+        </ol>
+      </div>
+
+      <h2>2. ウェブからの削除申請</h2>
+      <p>アプリを既にアンインストールされた場合や、アカウントおよび関連するすべてのクラウドデータの完全削除をご希望の場合は、下記サポートメールまでご連絡ください。</p>
+      <div class="card">
+        <p><strong>申請先メールアドレス:</strong> <a href="mailto:tabitap.app@gmail.com?subject=Account%20Deletion%20Request">tabitap.app@gmail.com</a></p>
+        <p>※ サインイン時にご利用のメールアドレス（Google / Apple）を明記の上、送信してください。通常3営業日以内に関連データを完全削除いたします。</p>
+      </div>
+
+      <h2>3. 削除されるデータ</h2>
+      <ul>
+        <li>Firebase Authentication アカウント識別子</li>
+        <li>クラウドに同期された都道府県マップ記録・メモ・写真データ</li>
+      </ul>
+      <p>※ 端末内に保存されているローカルデータは、アプリをアンインストールすることで直ちに消去されます。</p>
+    </div>
+
+    <!-- ENGLISH -->
+    <div id="en" class="section-en" style="display:none;">
+      <h1>Account & Data Deletion Request</h1>
+      <p>Thank you for using TabiTap. We respect your privacy and provide full control over your personal data.</p>
+
+      <h2>1. How to Delete Data from Within the App</h2>
+      <div class="card">
+        <ol>
+          <li>Open the <strong>TabiTap</strong> app.</li>
+          <li>Tap the <strong>Settings (Gear)</strong> icon in the top header.</li>
+          <li>Select <strong>"Delete Account"</strong> or <strong>"Clear All Map Data"</strong> to erase your on-device records immediately.</li>
+        </ol>
+      </div>
+
+      <h2>2. Web-Based Deletion Request</h2>
+      <p>If you have uninstalled the app or wish to request the permanent deletion of your account and any associated cloud data, please send an email request to our support team:</p>
+      <div class="card">
+        <p><strong>Support Email:</strong> <a href="mailto:tabitap.app@gmail.com?subject=Account%20Deletion%20Request">tabitap.app@gmail.com</a></p>
+        <p>Please include the email address associated with your Google or Apple Sign-In account. We will process your deletion request within 3 business days.</p>
+      </div>
+
+      <h2>3. Data That Will Be Deleted</h2>
+      <ul>
+        <li>Firebase Authentication user profile and identifiers.</li>
+        <li>Any synced cloud travel records, photos, and notes.</li>
+      </ul>
+      <p><em>Note: Data stored locally on your device is wiped permanently upon uninstalling the app.</em></p>
+    </div>
+  </div>
+
+  <script>
+    function setLang(lang) {
+      document.getElementById('ja').style.display = lang === 'ja' ? 'block' : 'none';
+      document.getElementById('en').style.display = lang === 'en' ? 'block' : 'none';
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>

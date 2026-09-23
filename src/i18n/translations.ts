@@ -153,6 +153,8 @@ export interface Translations {
     resetDesc: string;
     resetBtn: string;
     resetConfirm: string;
+    deleteAccountBtn: string;
+    deleteAccountConfirm: string;
     tutorialTitle: string;
     tutorialBtn: string;
   };
@@ -362,6 +364,8 @@ export const translations: Record<Language, Translations> = {
       resetDesc: 'すべてのマップと記録を初期状態に戻します。',
       resetBtn: '全データを初期化',
       resetConfirm: 'すべてのデータが消去されます。本当によろしいですか？',
+      deleteAccountBtn: 'アカウントを削除してデータを全消去',
+      deleteAccountConfirm: 'アカウント情報およびクラウド・端末上のすべてのマップデータが完全に削除されます。本当に削除しますか？',
       tutorialTitle: '使い方ガイド',
       tutorialBtn: '使い方ガイド・チュートリアルを見る'
     },
@@ -569,6 +573,8 @@ export const translations: Record<Language, Translations> = {
       resetDesc: 'Clear all local maps and start fresh.',
       resetBtn: 'Reset All Data',
       resetConfirm: 'All maps and notes will be deleted. Are you sure?',
+      deleteAccountBtn: 'Delete Account & Erase All Data',
+      deleteAccountConfirm: 'Your account and all associated maps/records will be permanently deleted. Are you sure you want to proceed?',
       tutorialTitle: 'How to Use',
       tutorialBtn: 'View App Tutorial & Guide'
     },

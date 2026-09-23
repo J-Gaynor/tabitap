@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useLanguage } from '../i18n/LanguageContext';
-import { X, Globe, Crown, Download, Upload, RotateCcw, ShieldCheck, Sun, Moon, UserCheck, BookOpen } from 'lucide-react';
+import { X, Globe, Crown, Download, Upload, RotateCcw, ShieldCheck, Sun, Moon, UserCheck, BookOpen, Trash2 } from 'lucide-react';
 import { NativeService } from '../services/nativeService';
 
 interface SettingsModalProps {
@@ -19,6 +19,7 @@ interface SettingsModalProps {
   onExportData: () => void;
   onImportData: (jsonStr: string) => boolean;
   onResetData: () => void;
+  onDeleteAccount: () => void;
 }
 
 export const SettingsModal: React.FC<SettingsModalProps> = ({
@@ -32,7 +33,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   onOpenProModal,
   onExportData,
   onImportData,
-  onResetData
+  onResetData,
+  onDeleteAccount
 }) => {
   const { language, setLanguage, t } = useLanguage();
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -58,8 +60,17 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   };
 
   const handleReset = () => {
+    NativeService.triggerLightHaptic();
     if (window.confirm(t.settingsModal.resetConfirm)) {
       onResetData();
+      onClose();
+    }
+  };
+
+  const handleDeleteAccount = () => {
+    NativeService.triggerLightHaptic();
+    if (window.confirm(t.settingsModal.deleteAccountConfirm)) {
+      onDeleteAccount();
       onClose();
     }
   };
@@ -380,8 +391,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           </div>
         </div>
 
-        {/* 6. Reset All Data */}
-        <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: 16 }}>
+        {/* 6. Danger Zone: Reset Data & Delete Account */}
+        <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: 16, display: 'flex', flexDirection: 'column', gap: 8 }}>
           <button
             type="button"
             className="btn btn-ghost"
@@ -390,6 +401,26 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           >
             <RotateCcw size={15} />
             <span>{t.settingsModal.resetBtn}</span>
+          </button>
+
+          <button
+            type="button"
+            className="btn btn-ghost"
+            onClick={handleDeleteAccount}
+            style={{
+              width: '100%',
+              color: '#dc2626',
+              background: 'rgba(239, 68, 68, 0.08)',
+              border: '1px solid rgba(239, 68, 68, 0.2)',
+              borderRadius: 12,
+              fontSize: '0.82rem',
+              fontWeight: 700,
+              gap: 6,
+              padding: '10px'
+            }}
+          >
+            <Trash2 size={15} />
+            <span>{t.settingsModal.deleteAccountBtn}</span>
           </button>
         </div>
       </div>

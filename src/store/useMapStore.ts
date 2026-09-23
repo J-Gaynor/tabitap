@@ -5,7 +5,8 @@ import {
   subscribeToAuth,
   syncMapToCloud,
   fetchUserMapsFromCloud,
-  logout as firebaseLogout
+  logout as firebaseLogout,
+  deleteUserAccount as firebaseDeleteUserAccount
 } from '../services/firebase';
 import { purchaseService } from '../services/purchaseService';
 
@@ -570,6 +571,27 @@ export function useMapStore() {
     await firebaseLogout().catch(() => {});
   }, [userId, userName]);
 
+  // Delete account & erase all user data permanently
+  const deleteAccount = useCallback(async () => {
+    try {
+      await firebaseDeleteUserAccount().catch(() => {});
+      await firebaseLogout().catch(() => {});
+    } catch (e) {
+      console.warn('Firebase user deletion error:', e);
+    }
+    localStorage.removeItem(STORAGE_KEY_USER_NAME);
+    localStorage.removeItem(STORAGE_KEY_USER_EMAIL);
+    localStorage.removeItem(STORAGE_KEY_USER_PROVIDER);
+    localStorage.removeItem(STORAGE_KEY_USER_ID);
+    setUserAccount('guest', 'トラベラー (Traveler)', '');
+    setUserName('トラベラー (Traveler)');
+    const newId = getOrCreateUserId();
+    const init = [createInitialDefaultMap(newId, 'トラベラー (Traveler)')];
+    setMaps(init);
+    setActiveMapIndexState(0);
+    localStorage.setItem(STORAGE_KEY_MAPS, JSON.stringify(init));
+  }, []);
+
   // Calculate current user's role for active map
   const isOwner = Boolean(activeMap && activeMap.ownerId === userId);
   const currentUserRole: UserRole = isOwner ? 'maker' : 'collaborator';
@@ -598,6 +620,7 @@ export function useMapStore() {
     deleteMap,
     exportAllData,
     importData,
-    resetAllData
+    resetAllData,
+    deleteAccount
   };
 }

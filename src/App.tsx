@@ -40,7 +40,8 @@ export const App: React.FC = () => {
     deleteMap,
     exportAllData,
     importData,
-    resetAllData
+    resetAllData,
+    deleteAccount
   } = useMapStore();
 
   // Navigation / View state
@@ -226,6 +227,7 @@ export const App: React.FC = () => {
             }}
             onImportData={importData}
             onResetData={resetAllData}
+            onDeleteAccount={deleteAccount}
           />
         )}
 

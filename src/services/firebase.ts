@@ -81,6 +81,13 @@ export const logout = async (): Promise<void> => {
   await signOut(auth);
 };
 
+export const deleteUserAccount = async (): Promise<void> => {
+  const currentUser = auth.currentUser;
+  if (currentUser) {
+    await currentUser.delete();
+  }
+};
+
 export const subscribeToAuth = (callback: (user: User | null) => void): Unsubscribe => {
   return onAuthStateChanged(auth, callback);
 };

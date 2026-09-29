@@ -95,4 +95,16 @@ describe('Firebase & RevenueCat Subscription Integration Tests', () => {
     const restoreRes = await purchaseService.restorePurchases();
     expect(restoreRes.success).toBe(true);
   });
+
+  it('should verify delete account translation keys and functions', async () => {
+    expect(translations.ja.settingsModal.deleteAccountBtn).toBeTruthy();
+    expect(translations.en.settingsModal.deleteAccountBtn).toBeTruthy();
+    expect(translations.ja.settingsModal.deleteAccountConfirm).toBeTruthy();
+    expect(translations.en.settingsModal.deleteAccountConfirm).toBeTruthy();
+
+    const { deleteUserAccount } = await import('../services/firebase');
+    expect(typeof deleteUserAccount).toBe('function');
+    // Calling deleteUserAccount when no user is signed in should safely resolve without crashing
+    await expect(deleteUserAccount()).resolves.toBeUndefined();
+  });
 });

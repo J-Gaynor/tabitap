@@ -26,7 +26,7 @@ import { getAnalytics, isSupported, Analytics } from 'firebase/analytics';
 import { JapanMapData } from '../types';
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || 'AIzaSyB6l0XMhKD6V62Zyxy9xEsZF2-EwbOUiTg',
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || '',
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || 'prefectures-app.firebaseapp.com',
   projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || 'prefectures-app',
   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || 'prefectures-app.firebasestorage.app',

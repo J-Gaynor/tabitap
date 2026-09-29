@@ -57,11 +57,7 @@ const createInitialDefaultMap = (userId: string, userName: string): JapanMapData
     isShared: false,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
-    prefectures: {
-      13: { status: 'visited', color: '#F43F5E', visitDate: '2025-01', rating: 5, notes: '浅草寺、東京タワー' },
-      26: { status: 'visited', color: '#EAB308', visitDate: '2024-11', rating: 5, notes: '伏見稲荷、金閣寺' },
-      27: { status: 'visited', color: '#F97316', visitDate: '2024-10', rating: 4, notes: '道頓堀たこ焼き' }
-    },
+    prefectures: {},
     collaborators: [
       {
         id: userId,

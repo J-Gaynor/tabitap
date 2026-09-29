@@ -89,8 +89,7 @@ export const PrefectureModal: React.FC<PrefectureModalProps> = ({
   const statusOptions: { key: VisitStatus; emoji: string; label: string }[] = [
     { key: 'visited', emoji: '🚩', label: t.statuses.visited },
     { key: 'want_to_go', emoji: '✨', label: t.statuses.want_to_go },
-    { key: 'lived', emoji: '🏠', label: t.statuses.lived },
-    { key: 'passed', emoji: '🚄', label: t.statuses.passed }
+    { key: 'lived', emoji: '🏠', label: t.statuses.lived }
   ];
 
   return (
@@ -191,7 +190,7 @@ export const PrefectureModal: React.FC<PrefectureModalProps> = ({
           <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 10 }}>
             {t.prefectureModal.visitedTitle}
           </label>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 8 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8 }}>
             {statusOptions.map((opt) => {
               const isCurrent = status === opt.key;
               return (
@@ -205,22 +204,23 @@ export const PrefectureModal: React.FC<PrefectureModalProps> = ({
                   style={{
                     display: 'flex',
                     alignItems: 'center',
-                    gap: 8,
-                    padding: '10px 12px',
+                    justifyContent: 'center',
+                    gap: 6,
+                    padding: '11px 4px',
                     borderRadius: 12,
-                    fontSize: '0.82rem',
+                    fontSize: '0.8rem',
                     fontWeight: isCurrent ? 700 : 500,
                     cursor: 'pointer',
                     transition: 'all 0.15s ease',
                     background: isCurrent ? 'rgba(244, 63, 94, 0.15)' : 'var(--bg-elevated)',
                     color: isCurrent ? '#f43f5e' : 'var(--text-primary)',
                     border: isCurrent ? '1.5px solid #f43f5e' : '1px solid var(--border-subtle)',
-                    textAlign: 'left'
+                    textAlign: 'center',
+                    whiteSpace: 'nowrap'
                   }}
                 >
-                  <span style={{ fontSize: '1.1rem' }}>{opt.emoji}</span>
-                  <span style={{ flex: 1 }}>{opt.label.split(' ')[0]}</span>
-                  {isCurrent && <Check size={16} />}
+                  <span style={{ fontSize: '1.05rem', lineHeight: 1 }}>{opt.emoji}</span>
+                  <span>{opt.label}</span>
                 </button>
               );
             })}
@@ -292,11 +292,25 @@ export const PrefectureModal: React.FC<PrefectureModalProps> = ({
           </div>
         </div>
 
-        {/* 3. Visit Date & Rating */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 18 }}>
-          <div>
-            <label style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: 6 }}>
-              <Calendar size={14} color="#0ea5e9" />
+        {/* 3. Visit Date & Rating Group */}
+        <div style={{
+          marginBottom: 18,
+          background: 'var(--bg-elevated)',
+          borderRadius: 14,
+          border: '1px solid var(--border-subtle)',
+          overflow: 'hidden'
+        }}>
+          {/* Visit Date Row */}
+          <div style={{
+            padding: '10px 14px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: 12,
+            borderBottom: '1px solid var(--border-subtle)'
+          }}>
+            <label style={{ display: 'flex', alignItems: 'center', gap: 7, fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-secondary)', whiteSpace: 'nowrap' }}>
+              <Calendar size={15} color="#0ea5e9" />
               <span>{t.prefectureModal.visitDate}</span>
             </label>
             <input
@@ -304,23 +318,34 @@ export const PrefectureModal: React.FC<PrefectureModalProps> = ({
               value={visitDate}
               onChange={(e) => setVisitDate(e.target.value)}
               style={{
-                width: '100%',
-                padding: '9px 12px',
-                borderRadius: 10,
-                background: 'var(--bg-elevated)',
+                padding: '6px 10px',
+                borderRadius: 8,
+                background: 'var(--bg-card)',
                 border: '1px solid var(--border-subtle)',
                 color: 'var(--text-primary)',
-                fontSize: '0.85rem'
+                fontSize: '0.82rem',
+                fontWeight: 500,
+                textAlign: 'center',
+                cursor: 'pointer',
+                outline: 'none',
+                maxWidth: 160
               }}
             />
           </div>
 
-          <div>
-            <label style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: 6 }}>
-              <Star size={14} color="#f59e0b" />
+          {/* Rating Row */}
+          <div style={{
+            padding: '10px 14px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: 10
+          }}>
+            <label style={{ display: 'flex', alignItems: 'center', gap: 7, fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-secondary)', whiteSpace: 'nowrap' }}>
+              <Star size={15} color="#f59e0b" />
               <span>{t.prefectureModal.rating}</span>
             </label>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 4, height: 38 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
               {[1, 2, 3, 4, 5].map((star) => (
                 <button
                   key={star}
@@ -332,8 +357,11 @@ export const PrefectureModal: React.FC<PrefectureModalProps> = ({
                   style={{
                     background: 'none',
                     border: 'none',
-                    padding: 2,
+                    padding: 3,
                     cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                     color: star <= rating ? '#f59e0b' : 'rgba(0,0,0,0.2)',
                     transition: 'transform 0.1s'
                   }}
